@@ -8,7 +8,7 @@ After=roscore.serivce
 
 [Service]
 EnvironmentFile=/lib/systemd/system/roscore.env
-ExecStart=/home/pi/catkin_ws/src/four_from_the_hangover/scripts/hack.py
+ExecStart=/home/pi/catkin_ws/src/four_from_the_hangover/scripts/copter_api.py
 Restart=on-abort
 
 [Install]
