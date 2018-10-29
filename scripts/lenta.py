@@ -20,19 +20,30 @@ neopixel.strip = neopixel.Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED
 neopixel.strip.begin()
 
 def fun_led(req):
-	if req.data == "red":
+	if req.fun == "green":
 		color = neopixel.Color(255,0,0)
 		for i in range(0,LED_COUNT):
 		        neopixel.strip.setPixelColor(i,color)
 		        neopixel.strip.show()
-	elif req.data == "blue":
+	elif req.fun == "red":
                 color = neopixel.Color(0,255,0)
                 for i in range(0,LED_COUNT):
                         neopixel.strip.setPixelColor(i,color)
                         neopixel.strip.show()
+	elif req.fun == "blue":
+		color = neopixel.Color(0,0,255)
+                for i in range(0,LED_COUNT):
+                        neopixel.strip.setPixelColor(i,color)
+                        neopixel.strip.show()
+	elif req.fun == "off":
+		color = neopixel.Color(0,0,0)
+                for i in range(0,LED_COUNT):
+                        neopixel.strip.setPixelColor(i,color)
+                        neopixel.strip.show()
+
 	return True
 
-rospy.Service('fun_led', srv.Lenta, fun_led)
+rospy.Service('led', srv.Lenta, fun_led)
 
 def start_loop():
 	r = rospy.Rate(10)
@@ -41,3 +52,4 @@ def start_loop():
 
 
 
+start_loop()
